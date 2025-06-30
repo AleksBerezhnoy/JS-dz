@@ -1,14 +1,7 @@
-const users = [
-  { id: 1, name: 'Вася' },
-  { id: 2, name: 'Петя' },
-  { id: 1, name: 'Вася' },
-];
+function play(dice) {
+  const facets = parseInt(dice.slice(1), 10);
+  const randomFacets = Math.floor(Math.random() * facets + 1);
+  return randomFacets;
+}
 
-const stringifiedUsers = users.map((user) => JSON.stringify(user));
-console.log(stringifiedUsers);
-
-const uniqueStringifiedUsers = new Set(stringifiedUsers);
-
-const uniqueUsers = Array.from(uniqueStringifiedUsers).map((userString) => JSON.parse(userString));
-
-console.log(uniqueUsers);
+console.log(play('d6'));
