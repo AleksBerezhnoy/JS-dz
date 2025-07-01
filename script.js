@@ -1,18 +1,22 @@
-function ageIs14(birthday) {
+function updateTimer() {
   const now = new Date();
-  const birthDate = new Date(birthday);
+  const newYear = new Date(now.getFullYear() + 1, 0, 1);
+  const diff = newYear - now;
 
-  let age = now.getFullYear() - birthDate.getFullYear();
-
-  const hasBirthdayPassed =
-    now.getMonth() > birthDate.getMonth() ||
-    (now.getMonth() === birthDate.getMonth() && now.getDate() >= birthDate.getDate());
-
-  if (!hasBirthdayPassed) {
-    age--;
+  if (diff <= 0) {
+    console.log('С Новым Годом!');
+    return;
   }
 
-  return age >= 14;
+  const seconds = Math.floor(diff / 1000) % 60;
+  const minutes = Math.floor(diff / (1000 * 60)) % 60;
+  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
+  const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+
+  const timerStr = `${months} мес, ${days} дн, ${hours} час, ${minutes} мин, ${seconds} сек`;
+  console.log(timerStr);
 }
 
-console.log(ageIs14('2010-07-02'));
+setInterval(updateTimer, 1000);
+updateTimer();
