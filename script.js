@@ -4,12 +4,12 @@ const Character = function (species, name, language) {
   this.language = language;
 };
 Character.prototype.speak = function (){
-  console.log(this.name, this,this.language);
+  console.log(this.language, this.name);
 }
 
 
 const Ork = function (species, name, language, weapon) {
-  Character.call(this, species, name, language); /
+  Character.call(this, species, name, language); 
   this.weapon = weapon;
 };
 
@@ -24,7 +24,7 @@ Ork.prototype.break = function () {
 
 
 const Elf = function (species, name, language, incantations) {
-  Character.call(this, species, name, language); /
+  Character.call(this, species, name, language); 
   this.incantations = incantations;
 };
 
