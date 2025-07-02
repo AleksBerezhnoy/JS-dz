@@ -1,22 +1,28 @@
-function updateTimer() {
-  const now = new Date();
-  const newYear = new Date(now.getFullYear() + 1, 0, 1);
-  const diff = newYear - now;
+const Character = function (species, name, language) {
+  this.species = species;
+  this.name = name;
+  this.language = language;
+};
 
-  if (diff <= 0) {
-    console.log('С Новым Годом!');
-    return;
-  }
+const Ork = function (species, name, language, weapon) {
+  Character.call(this, species, name, language);
+  this.weapon = weapon;
+};
 
-  const seconds = Math.floor(diff / 1000) % 60;
-  const minutes = Math.floor(diff / (1000 * 60)) % 60;
-  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
-  const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
-
-  const timerStr = `${months} мес, ${days} дн, ${hours} час, ${minutes} мин, ${seconds} сек`;
-  console.log(timerStr);
+Ork.prototype.break = function (){
+  console.log(`Удар нанесен ${this.weapon}`);
 }
 
-setInterval(updateTimer, 1000);
-updateTimer();
+const Elf = function (species, name, language, incantations) {
+  Character.call(this, species, name, language);
+  this.incantations = incantations;
+};
+Elf.prototype.createIncantations = function (){
+  console.log(`Создалось заклинание под названием ${this.incantations}`);
+}
+
+
+const ork = new Ork('orks', 'ork', 'ru', 'Мечом')
+const elf = new Elf('elfs', 'elf', 'en', 'Лечебное зелье');
+elf.createIncantations()
+ork.break()
