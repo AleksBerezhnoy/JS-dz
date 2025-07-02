@@ -1,45 +1,27 @@
-const Character = function (species, name, language) {
-  this.species = species;
-  this.name = name;
-  this.language = language;
-};
-Character.prototype.speak = function (){
-  console.log(this.language, this.name);
+class Car {
+  #mark;
+  #model;
+  #mileage;
+  constructor(mark, model, mileage) {
+    this.#mark = mark
+    this.#model = model
+    this.#mileage = mileage;
+  }
+
+  set changeMileage(newMilage) {
+    this.#mileage = newMilage
+  }
+  get changeMileage() {
+    return this.#mileage + ' км';
+  }
+
+  info() {
+    console.log(this.#mark, this.#model, this.#mileage + " км");
+  }
 }
 
-
-const Ork = function (species, name, language, weapon) {
-  Character.call(this, species, name, language); 
-  this.weapon = weapon;
-};
-
-
-Ork.prototype = Object.create(Character.prototype);
-Ork.prototype.constructor = Ork;
-
-
-Ork.prototype.break = function () {
-  console.log(`Удар нанесен ${this.weapon}`);
-};
-
-
-const Elf = function (species, name, language, incantations) {
-  Character.call(this, species, name, language); 
-  this.incantations = incantations;
-};
-
-
-Elf.prototype = Object.create(Character.prototype);
-Elf.prototype.constructor = Elf;
-
-
-Elf.prototype.createIncantations = function () {
-  console.log(`Создалось заклинание под названием ${this.incantations}`);
-};
-
-
-const ork = new Ork('orks', 'ork', 'ru', 'Мечом');
-const elf = new Elf('elfs', 'elf', 'en', 'Лечебное зелье');
-
-elf.createIncantations(); 
-ork.break(); 
+const mercedes = new Car('Mercedes', 'AMG-97', 30000);
+console.log(mercedes);
+mercedes.changeMileage = 10000
+console.log(mercedes.changeMileage);
+mercedes.info()
