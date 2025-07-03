@@ -15,9 +15,11 @@ class Ork extends Character {
     super(rasa, name, language);
     this.weapon = weapon
   }
-
+  demage() {
+    console.log("Орк ударил");
+  }
   speak() {
-    console.log(`Я персонаж под именем ${this.name}`);
+    console.log(`Я персонаж под именем ${this.name} и у меня есть ${this.weapon}`);
   }
 }
 
@@ -27,8 +29,12 @@ class Elf extends Character {
     this.zaclinanie = zaclinanie;
   }
 
+  newZaclinanie() {
+    console.log("Наношу заклинание");
+  }
+
   speak() {
-    console.log(`Я персонаж под именем ${this.name}`);
+    console.log(`Я персонаж под именем ${this.name} и у меня есть способности ${this.zaclinanie}`);
   }
 }
 
