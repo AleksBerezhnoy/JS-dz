@@ -1,27 +1,36 @@
-class Car {
-  #mark;
-  #model;
-  #mileage;
-  constructor(mark, model, mileage) {
-    this.#mark = mark
-    this.#model = model
-    this.#mileage = mileage;
+class Character {
+  constructor(rasa, name, language) {
+    this.rasa = rasa;
+    this.name = name;
+    this.language = language;
   }
 
-  set changeMileage(newMilage) {
-    this.#mileage = newMilage
-  }
-  get changeMileage() {
-    return this.#mileage + ' км';
-  }
-
-  info() {
-    console.log(this.#mark, this.#model, this.#mileage + " км");
+  speak() {
+    console.log(`Я персонаж под именем ${this.name}`);
   }
 }
 
-const mercedes = new Car('Mercedes', 'AMG-97', 30000);
-console.log(mercedes);
-mercedes.changeMileage = 10000
-console.log(mercedes.changeMileage);
-mercedes.info()
+class Ork extends Character {
+  constructor(rasa, name, language, weapon) {
+    super(rasa, name, language);
+    this.weapon = weapon
+  }
+
+  speak() {
+    console.log(`Я персонаж под именем ${this.name}`);
+  }
+}
+
+class Elf extends Character {
+  constructor(rasa, name, language, zaclinanie) {
+    super(rasa, name, language);
+    this.zaclinanie = zaclinanie;
+  }
+
+  speak() {
+    console.log(`Я персонаж под именем ${this.name}`);
+  }
+}
+
+const newOrk = new Ork('Орки', 'Супер Орк', 'Русский', "Меч")
+newOrk.speak()
