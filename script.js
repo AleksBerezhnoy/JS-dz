@@ -1,17 +1,25 @@
-
 function doSomething(lat, lng) {
   console.log(`Широта: ${lat}, Долгота: ${lng}`);
 }
 
-function getCoords(){
-  return new Promise((resolve, reject)=> {
-    resolve(
-      navigator.geolocation.getCurrentPosition(position=> {
-        doSomething(position.coords.latitude, position.coords.longitude)
-      })
-    )
-    reject(new Error('Координаты не получены'))
-  })
+function getCoords() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+
+        resolve({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (error) => {
+
+        reject(new Error('Координаты не получены: ' + error.message));
+      },
+    );
+  });
 }
 
-getCoords().catch(err=> console.log(err))
+getCoords()
+  .then(({ lat, lng }) => doSomething(lat, lng))
+  .catch((err) => console.log(err));
