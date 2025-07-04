@@ -1,42 +1,39 @@
-class Character {
-  constructor(rasa, name, language) {
-    this.rasa = rasa;
-    this.name = name;
-    this.language = language;
-  }
-
-  speak() {
-    console.log(`Я персонаж под именем ${this.name}`);
+class Billing {
+  amount = 0;
+  calculateTotal() {
+    return this.amount + 10
   }
 }
 
-class Ork extends Character {
-  constructor(rasa, name, language, weapon) {
-    super(rasa, name, language);
-    this.weapon = weapon
+class fixBilling extends Billing {
+  constructor(amount) {
+    super(amount);
   }
-  demage() {
-    console.log("Орк ударил");
+
+  calculateTotal() {
+    return this.amount
   }
-  speak() {
-    console.log(`Я персонаж под именем ${this.name} и у меня есть ${this.weapon}`);
+}
+class hourBilling extends Billing {
+  constructor(amount, hour) {
+    super(amount);
+    this.hour = hour
+  }
+
+  calculateTotal() {
+    return this.amount * this.hour
   }
 }
 
-class Elf extends Character {
-  constructor(rasa, name, language, zaclinanie) {
-    super(rasa, name, language);
-    this.zaclinanie = zaclinanie;
+class itemBilling extends Billing {
+  constructor(amount, countElements) {
+    super(amount);
+    this.countElements = countElements;
   }
 
-  newZaclinanie() {
-    console.log("Наношу заклинание");
-  }
-
-  speak() {
-    console.log(`Я персонаж под именем ${this.name} и у меня есть способности ${this.zaclinanie}`);
+  calculateTotal() {
+    return this.amount * this.countElements
   }
 }
 
-const newOrk = new Ork('Орки', 'Супер Орк', 'Русский', "Меч")
-newOrk.speak()
+console.log(new hourBilling(10, 10).calculateTotal());
