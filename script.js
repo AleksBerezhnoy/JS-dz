@@ -1,7 +1,9 @@
 class Billing {
-  amount = 0;
+  constructor(amount) {
+    this.amount = amount
+  }
   calculateTotal() {
-    return this.amount + 10
+    return this.amount
   }
 }
 
