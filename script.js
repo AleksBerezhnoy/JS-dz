@@ -1,41 +1,17 @@
-class Billing {
-  constructor(amount) {
-    this.amount = amount
-  }
-  calculateTotal() {
-    return this.amount
-  }
+
+function doSomething(lat, lng) {
+  console.log(`Широта: ${lat}, Долгота: ${lng}`);
 }
 
-class fixBilling extends Billing {
-  constructor(amount) {
-    super(amount);
-  }
-
-  calculateTotal() {
-    return this.amount
-  }
-}
-class hourBilling extends Billing {
-  constructor(amount, hour) {
-    super(amount);
-    this.hour = hour
-  }
-
-  calculateTotal() {
-    return this.amount * this.hour
-  }
+function getCoords(){
+  return new Promise((resolve, reject)=> {
+    resolve(
+      navigator.geolocation.getCurrentPosition(position=> {
+        doSomething(position.coords.latitude, position.coords.longitude)
+      })
+    )
+    reject(new Error('Координаты не получены'))
+  })
 }
 
-class itemBilling extends Billing {
-  constructor(amount, countElements) {
-    super(amount);
-    this.countElements = countElements;
-  }
-
-  calculateTotal() {
-    return this.amount * this.countElements
-  }
-}
-
-console.log(new hourBilling(10, 10).calculateTotal());
+getCoords().catch(err=> console.log(err))
