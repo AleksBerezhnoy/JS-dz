@@ -5,7 +5,6 @@ let count = 0;
 wrapper.addEventListener('click', (e) => {
   const children = [...wrapper.children];
   children.forEach((btn) => {
-    if (btn.textContent == 'Нажата');
     btn.textContent = 'Нажми меня';
   });
 
