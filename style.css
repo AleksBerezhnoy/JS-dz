@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(44, 44, 44);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 30%;
+  margin: auto;
+}
+
+.button {
+  font-size: 24px;
+
+  height: 48px;
+  border-radius: 12px;
+  background-color: purple;
+}
+
+.button:hover {
+  color: purple;
+  background: none;
+  border: 1px solid purple;
+}
+

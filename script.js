@@ -1,25 +1,15 @@
-function doSomething(lat, lng) {
-  console.log(`Широта: ${lat}, Долгота: ${lng}`);
-}
+const wrapper = document.querySelector('.wrapper');
+const counter = document.querySelector('.counter');
+let count = 0;
 
-function getCoords() {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-
-        resolve({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      },
-      (error) => {
-
-        reject(new Error('Координаты не получены: ' + error.message));
-      },
-    );
+wrapper.addEventListener('click', (e) => {
+  const children = [...wrapper.children];
+  children.forEach((btn) => {
+    if (btn.textContent == 'Нажата');
+    btn.textContent = 'Нажми на меня';
   });
-}
 
-getCoords()
-  .then(({ lat, lng }) => doSomething(lat, lng))
-  .catch((err) => console.log(err));
+  e.target.innerText = 'Нажата!';
+  count++;
+  counter.textContent = count;
+});
