@@ -6,7 +6,7 @@ wrapper.addEventListener('click', (e) => {
   const children = [...wrapper.children];
   children.forEach((btn) => {
     if (btn.textContent == 'Нажата');
-    btn.textContent = 'Нажми на меня';
+    btn.textContent = 'Нажми меня';
   });
 
   e.target.innerText = 'Нажата!';
